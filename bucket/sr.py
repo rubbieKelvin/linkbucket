@@ -11,6 +11,7 @@ class LinkSr(ModelSerializer):
     tags = StringRelatedField(many=True)
     baseUrl = SerializerMethodField()
     trackingUrl = SerializerMethodField()
+    voteCount = SerializerMethodField()
 
     class Meta:
         fields = [
