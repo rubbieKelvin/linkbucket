@@ -8,6 +8,9 @@ class Tag(models.Model):
 	name = models.CharField(max_length=50)
 	date_created = models.DateTimeField(auto_now_add=True)
 
+	def __str__(self) -> str:
+		return self.name
+
 class Link(models.Model):
 	id = models.BigAutoField(primary_key=True)
 	title = models.CharField(max_length=300)
@@ -30,7 +33,11 @@ class Link(models.Model):
 			image=image,
 			trackingID=tx)
 		instance.save()
+		instance.tags.add(*tags)
 		return instance
+
+	def __str__(self) -> str:
+		return self.title
 
 
 class Bookmark(models.Model):

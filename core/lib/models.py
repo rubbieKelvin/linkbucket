@@ -5,6 +5,6 @@ def getorcreate(model:type[models.Model], *get:models.Q, **create:Any) -> models
     instance = model.objects.filter(*get).first()
     if instance:
         return instance
-    instance = models(**create)
+    instance = model(**create)
     instance.save()
     return instance

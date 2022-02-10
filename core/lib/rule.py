@@ -28,5 +28,4 @@ class PasswordField(Field):
 	"""
 	def compare(self, other: str) -> bool:
 		self.error = f"{self.name} should have at least 6 characters"
-		if len(other) < 6: return False
-		return False
+		return len(other) >= 6

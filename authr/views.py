@@ -6,22 +6,21 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 
-from django.db import models
 from .models import User
 from maprule import fields
 
 from core.lib.rule import EmailField
 from core.lib.rule import PasswordField
 
-def loginRule() -> fields.Dictionary:
+def loginRule(force=True) -> fields.Dictionary:
 	return fields.Dictionary(dict(
 		email=EmailField(),
-		password=PasswordField()
+		password=PasswordField() if force else fields.String()
 	))
 
 @api_view(['post'])
 def login(request: Request) -> Response:
-	rule = loginRule()
+	rule = loginRule(force=False)
 	if not rule.compare(request.data):
 		return Response({'error': rule.error})
 	data: dict = request.data
