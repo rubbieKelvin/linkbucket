@@ -31,3 +31,4 @@ class Vote(models.Model):
     type = models.CharField(max_length=8, choices=Type.choices)
     user = models.ForeignKey('authr.User', on_delete=models.CASCADE, related_name='votes')
     date_voted = models.DateTimeField(auto_now_add=Type)
+    link = models.ForeignKey(Link, on_delete=models.CASCADE, related_name='votes', null=True)
