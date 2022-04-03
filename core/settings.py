@@ -73,7 +73,7 @@ ASGI_APPLICATION = 'core.asgi.application'
 
 DATABASES = dict()
 
-if DEBUG:
+if DEBUG and not os.environ.get("DATABASE_URL"):
     DATABASES["default"] = dict(
         ENGINE='django.db.backends.sqlite3',
         NAME=BASE_DIR / 'db.sqlite3'
