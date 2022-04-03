@@ -129,6 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # add front-end domain names here
 CORS_ALLOWED_ORIGINS = [
     # ...
+    "https://link-bucket.herokuapp.com"
 ]
 
 # Auth settings
